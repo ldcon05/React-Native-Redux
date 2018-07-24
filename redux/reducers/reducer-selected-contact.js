@@ -1,8 +1,8 @@
-import { FETCH_CONTACTS, SELECTED_CONTACT } from '../actions/contacts';
+import { SELECTED_CONTACT } from '../actions/contacts';
 
 export default function (state = [], action) {
 	switch(action.type) {
-		case FETCH_CONTACTS:
+    case SELECTED_CONTACT:
       return action.payload
 	}
 
