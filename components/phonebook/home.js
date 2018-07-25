@@ -2,23 +2,19 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
 
-import { List, ListItem, Text, Button, Icon } from 'native-base';
+import { List, ListItem, Text, Button, Icon, Fab, View } from 'native-base';
 import { fetchContacts, selectedContact } from '../../redux/actions/contacts';
 
 class Home extends Component {
-  static navigationOptions = ({ navigation }) => (
-    { headerRight:
-      (
-        <Button transparent onPress={() => navigation.navigate('Create')} >
-          <Icon type="Feather" name="user-plus" />
-        </Button>
-      )
-    }
-  );
+
+  logOut() {
+    this.props.navigation.navigate('Login')
+  }
+
 
   componentDidMount() {
     if(this.props.loggedUser != null)
-  	  this.props.fetchContacts(this.props.loggedUser.uid)
+      this.props.fetchContacts(this.props.loggedUser.uid)
   }
 
   showContact(contact) {
@@ -41,9 +37,19 @@ class Home extends Component {
 
   render() {
     return (
-      <List>
-        {this.renderContacts()}
-      </List>
+      <View style={{ flex: 1 }}>
+        <List>
+          {this.renderContacts()}
+        </List>
+        <Fab
+          direction="up"
+          containerStyle={{ }}
+          style={{ backgroundColor: '#5067FF' }}
+          position="bottomRight"
+          onPress={() => this.props.navigation.navigate('Create')}>
+          <Icon type="Feather" name="plus" />
+        </Fab>
+      </View>
     );
   }
 }

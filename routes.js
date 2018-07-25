@@ -6,39 +6,41 @@ import Home from './components/phonebook/home'
 import CreatePhoneNumber from './components/phonebook/create'
 import ShowContact from './components/phonebook/show'
 
-export default createStackNavigator(
-  {
-    Login : {
-      screen: Login,
-      navigationOptions: {
-        title: 'Login',
-      }
-    },
-    Register : {
-      screen: Register,
-      navigationOptions: {
-        title: 'Register'
-      }
-    },
-    Home : {
-      screen: Home,
-      navigationOptions: {
-        title: 'Contacts',
-        headerLeft: null
-      }
-    },
-    Create : {
-      screen: CreatePhoneNumber,
-      navigationOptions: {
-        title: 'Create Contacts',
-      },
-    },
-    Show : {
-      screen: ShowContact,
-      navigationOptions: {
-        title: 'Contact',
-      },
+
+const routeConfigs = {
+  Login : {
+    screen: Login,
+    navigationOptions: {
+      title: 'Login',
     }
   },
-  { initialRouteName: 'Login' }
-);
+  Register : {
+    screen: Register,
+    navigationOptions: {
+      title: 'Register'
+    }
+  },
+  Home : {
+    screen: Home,
+    navigationOptions: {
+      title: 'Contacts',
+      headerLeft: null,
+    }
+  },
+  Create : {
+    screen: CreatePhoneNumber,
+    navigationOptions: {
+      title: 'Create Contacts',
+    },
+  },
+  Show : {
+    screen: ShowContact,
+    navigationOptions: {
+      title: 'Contact',
+    },
+  }
+}
+
+const StackNavigatorConfig = { initialRouteName: 'Login' }
+
+export default createStackNavigator(routeConfigs, StackNavigatorConfig);

@@ -20,8 +20,8 @@ const logOutFirebase = () => {
   firebase
     .auth()
     .signOut()
-    .then( () => true )
-    .catch( error => false)
+    .then( () => console.log('LogOut') )
+    .catch( error => console.log(error))
 }
 
 export {registerUserInFirebase, signInFirebase, checkUserFirebase, logOutFirebase}
