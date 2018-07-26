@@ -1,17 +1,16 @@
 import firebase from '../../db/firebase';
 
-const signInFirebase =  (user) => {
-  firebase
+const signInFirebase = (user) => {
+  return firebase
     .auth()
     .signInWithEmailAndPassword(user.email, user.password)
-    .catch( error => { } );
+
 }
 
 const registerUserInFirebase = (user) => {
-  firebase
+  return firebase
     .auth()
     .createUserWithEmailAndPassword(user.email, user.password)
-    .catch( error => { } );
 }
 
 const checkUserFirebase = () => firebase.auth().currentUser
@@ -20,8 +19,8 @@ const logOutFirebase = () => {
   firebase
     .auth()
     .signOut()
-    .then( () => console.log('LogOut') )
-    .catch( error => console.log(error))
+    .then( () => {} )
+    .catch( error => {})
 }
 
 export {registerUserInFirebase, signInFirebase, checkUserFirebase, logOutFirebase}

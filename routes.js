@@ -41,6 +41,6 @@ const routeConfigs = {
   }
 }
 
-const StackNavigatorConfig = { initialRouteName: 'Login' }
+const StackNavigatorConfig = { initialRouteName: 'Login', headerMode: 'none'  }
 
 export default createStackNavigator(routeConfigs, StackNavigatorConfig);

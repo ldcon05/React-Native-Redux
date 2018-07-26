@@ -1,17 +1,26 @@
-import { signInFirebase, checkUserFirebase } from '../../services/auth/firebaseAuth'
+import { signInFirebase } from '../../services/auth/firebaseAuth'
 
 const SIGN_IN = 'sign_in'
 
 function SignIn(user) {
-  return dispatch => {
+  return  dispatch => {
     signInFirebase(user)
-    const loggedUser = checkUserFirebase() ;
-
-    dispatch({
-      type: SIGN_IN,
-      payload: (loggedUser.uid) ? loggedUser : {}
-    })
+      .then(logged => {
+        dispatch({
+          type: SIGN_IN,
+          payload: logged
+        })
+      })
+      .catch(error => {
+        dispatch({
+          type: SIGN_IN,
+          payload: {
+            validation: true
+          }
+        })
+      })
   }
 }
+
 
 export { SIGN_IN, SignIn }

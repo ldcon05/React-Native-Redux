@@ -8,12 +8,13 @@ function fetchContacts(userId) {
     firestore
       .collection('contacts')
       .where('userId', '==', userId)
-      .onSnapshot( onSnapshot => {
+      .get()
+      .then(contacts => {
         dispatch({
           type: FETCH_CONTACTS,
-          payload: onSnapshot
+          payload: contacts
         });
-		  });
+      })
 	}
 }
 

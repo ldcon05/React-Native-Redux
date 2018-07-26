@@ -2,19 +2,19 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
 
-import { List, ListItem, Text, Button, Icon, Fab, View } from 'native-base';
+import { List, ListItem, Text, Button, Icon, Fab, View, Header, Left, Body, Title, Right } from 'native-base';
 import { fetchContacts, selectedContact } from '../../redux/actions/contacts';
+import { logOut } from '../../redux/actions/logOut'
 
 class Home extends Component {
 
-  logOut() {
-    this.props.navigation.navigate('Login')
+  logOutFirebase() {
+    this.props.logOut()
+    this.props.navigation.navigate('Login', {logOut: true})
   }
 
-
-  componentDidMount() {
-    if(this.props.loggedUser != null)
-      this.props.fetchContacts(this.props.loggedUser.uid)
+  getContacts(userId) {
+      this.props.fetchContacts(userId)
   }
 
   showContact(contact) {
@@ -36,8 +36,24 @@ class Home extends Component {
   }
 
   render() {
+    if (this.props.loggedUser)
+      this.getContacts(this.props.loggedUser.user.uid)
+
     return (
       <View style={{ flex: 1 }}>
+        <Header>
+          <Left />
+          <Body>
+            <Title>Contacts</Title>
+          </Body>
+          <Right>
+            <Button
+              transparent
+              onPress={() => this.logOutFirebase()}>
+              <Icon type='Feather' name="log-out" />
+            </Button>
+          </Right>
+        </Header>
         <List>
           {this.renderContacts()}
         </List>
@@ -65,7 +81,8 @@ function mapDispathtoProps(dispatch) {
   return bindActionCreators(
     {
       fetchContacts: fetchContacts,
-      selectedContact: selectedContact
+      selectedContact: selectedContact,
+      logOut: logOut
     }, dispatch)
 }
 
