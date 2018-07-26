@@ -4,13 +4,14 @@ import { bindActionCreators } from 'redux';
 import { View, Text, Button, Header, Body, Title } from 'native-base';
 import GenerateForm from 'react-native-form-builder';
 
-import { SignIn } from '../../redux/actions/login'
+import { SignIn } from '../../redux/actions/users'
 import fields from './fields'
+import Navbar from '../layout/header'
 
 class Login extends Component {
   constructor(props){
     super(props)
-    this.state = {validation: ''}
+    this.state = { validation: '' }
   }
 
   loginFirebase() {
@@ -45,11 +46,7 @@ class Login extends Component {
   render() {
     return (
       <View >
-        <Header>
-          <Body>
-            <Title>Login</Title>
-          </Body>
-        </Header>
+        { Navbar('Login') }
         <GenerateForm
           ref = {c => { this.formGenerator = c }}
           fields = {fields}

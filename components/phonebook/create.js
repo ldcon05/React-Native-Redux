@@ -6,6 +6,7 @@ import GenerateForm from 'react-native-form-builder';
 
 import { createContact } from '../../redux/actions/contacts'
 import fields from './fields'
+import Navbar from '../layout/header'
 
 
 class CreatePhoneNumber extends Component {
@@ -17,19 +18,7 @@ class CreatePhoneNumber extends Component {
   render() {
     return (
       <View>
-        <Header>
-          <Left>
-            <Button
-              transparent
-              onPress={() => this.props.navigation.goBack()}>
-              <Icon type='Feather' name="arrow-left" />
-            </Button>
-          </Left>
-          <Body>
-            <Title>Register</Title>
-          </Body>
-          <Right />
-        </Header>
+        { Navbar('Register', this.props.navigation) }
         <GenerateForm
           ref={(c) => { this.formGenerator = c; }}
           fields={fields}

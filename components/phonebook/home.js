@@ -4,7 +4,8 @@ import { bindActionCreators } from 'redux'
 
 import { List, ListItem, Text, Button, Icon, Fab, View, Header, Left, Body, Title, Right } from 'native-base';
 import { fetchContacts, selectedContact } from '../../redux/actions/contacts';
-import { logOut } from '../../redux/actions/logOut'
+import { logOut } from '../../redux/actions/users'
+import Navbar from '../layout/header'
 
 class Home extends Component {
 
@@ -41,19 +42,8 @@ class Home extends Component {
 
     return (
       <View style={{ flex: 1 }}>
-        <Header>
-          <Left />
-          <Body>
-            <Title>Contacts</Title>
-          </Body>
-          <Right>
-            <Button
-              transparent
-              onPress={() => this.logOutFirebase()}>
-              <Icon type='Feather' name="log-out" />
-            </Button>
-          </Right>
-        </Header>
+        { Navbar('Contacts', false, this ) }
+
         <List>
           {this.renderContacts()}
         </List>

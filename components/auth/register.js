@@ -4,8 +4,9 @@ import { bindActionCreators } from 'redux';
 import { View, Text, Button, Header, Left, Body, Title, Icon, Right } from 'native-base';
 import GenerateForm from 'react-native-form-builder';
 
-import { RegisterUser } from '../../redux/actions/register'
+import { RegisterUser } from '../../redux/actions/users'
 import fields from './fields'
+import Navbar from '../layout/header'
 
 class Register extends Component {
 
@@ -27,19 +28,7 @@ class Register extends Component {
   render() {
     return (
       <View>
-        <Header>
-          <Left>
-            <Button
-              transparent
-              onPress={() => this.props.navigation.goBack()}>
-              <Icon type='Feather' name="arrow-left" />
-            </Button>
-          </Left>
-          <Body>
-            <Title>Register</Title>
-          </Body>
-          <Right />
-        </Header>
+        { Navbar('Register', this.props.navigation) }
         <GenerateForm
           ref = {c => { this.formGenerator = c }}
           fields = {fields}
