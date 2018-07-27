@@ -15,6 +15,11 @@ const renderRightSide = (url) => (
   <Right>
     <Button
       transparent
+      onPress={() => url.props.navigation.navigate('Search') }>
+      <Icon type='Feather' name="search" />
+    </Button>
+    <Button
+      transparent
       onPress={() => url.logOutFirebase()}>
       <Icon type='Feather' name="log-out" />
     </Button>

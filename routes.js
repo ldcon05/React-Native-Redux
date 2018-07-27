@@ -5,39 +5,27 @@ import Register from './components/auth/register'
 import Home from './components/phonebook/home'
 import CreatePhoneNumber from './components/phonebook/create'
 import ShowContact from './components/phonebook/show'
+import Search from './components/phonebook/search'
 
 
 const routeConfigs = {
   Login : {
     screen: Login,
-    navigationOptions: {
-      title: 'Login',
-    }
   },
   Register : {
     screen: Register,
-    navigationOptions: {
-      title: 'Register'
-    }
   },
   Home : {
     screen: Home,
-    navigationOptions: {
-      title: 'Contacts',
-      headerLeft: null,
-    }
   },
   Create : {
     screen: CreatePhoneNumber,
-    navigationOptions: {
-      title: 'Create Contacts',
-    },
   },
   Show : {
     screen: ShowContact,
-    navigationOptions: {
-      title: 'Contact',
-    },
+  },
+  Search: {
+    screen: Search
   }
 }
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import Toast from 'react-native-simple-toast';
+import Toast from 'react-native-easy-toast';
 import { View, Container, Content, Text, Button, Header, Body, Title } from 'native-base';
 import GenerateForm from 'react-native-form-builder';
 
@@ -19,7 +19,7 @@ class Login extends Component {
   }
 
   showValition() {
-    Toast.show('Wrong Credentials!');
+    this.refs.toast.show('Wrong Credentials!');
   }
 
   setDefaultForm() {
@@ -47,7 +47,7 @@ class Login extends Component {
             ref = {c => { this.formGenerator = c }}
             fields = {fields}
           />
-          
+
           <Button block onPress={() => this.loginFirebase() }>
             <Text>Login</Text>
           </Button>
@@ -58,6 +58,7 @@ class Login extends Component {
             </Button>
           </View>
         </Content>
+        <Toast ref="toast"/>
       </Container>
     );
   }
