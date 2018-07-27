@@ -10,7 +10,7 @@ class ShowContact extends Component {
 
   removeContact() {
     this.props.deleteContact(this.props.selectedContact.id)
-    this.props.navigation.goBack()
+    this.props.navigation.navigate('Home')
   }
 
   render() {
