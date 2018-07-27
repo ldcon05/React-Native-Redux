@@ -26,7 +26,7 @@ export default (title, goBackUrl=false, logOutUrl=false ) => {
   const elementRightHeader = (logOutUrl) ? renderRightSide(logOutUrl) : <Right />;
 
   return (
-    <Header>
+    <Header noShadow>
       { elementLeftHeader }
       <Body>
         <Title>{title}</Title>

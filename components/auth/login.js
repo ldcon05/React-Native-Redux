@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { View, Text, Button, Header, Body, Title } from 'native-base';
+import Toast from 'react-native-simple-toast';
+import { View, Container, Content, Text, Button, Header, Body, Title } from 'native-base';
 import GenerateForm from 'react-native-form-builder';
 
 import { SignIn } from '../../redux/actions/users'
@@ -9,11 +10,6 @@ import fields from './fields'
 import Navbar from '../layout/header'
 
 class Login extends Component {
-  constructor(props){
-    super(props)
-    this.state = { validation: '' }
-  }
-
   loginFirebase() {
     this.props.signIn(this.formGenerator.getValues())
   }
@@ -23,7 +19,7 @@ class Login extends Component {
   }
 
   showValition() {
-    this.setState({validation : 'Credenciales Incorrectas'})
+    Toast.show('Wrong Credentials!');
   }
 
   setDefaultForm() {
@@ -38,27 +34,31 @@ class Login extends Component {
         this.showValition()
       else{
         this.setDefaultForm()
-        this.setState({validation : ''})
       }
     }
   }
 
   render() {
     return (
-      <View >
+      <Container>
         { Navbar('Login') }
-        <GenerateForm
-          ref = {c => { this.formGenerator = c }}
-          fields = {fields}
-        />
-        <Text>{this.state.validation}</Text>
-        <Button block onPress={() => this.loginFirebase() }>
-          <Text>Login</Text>
-        </Button>
-        <Button transparent onPress={ () => this.props.navigation.navigate('Register') }>
-          <Text>Register</Text>
-        </Button>
-      </View>
+        <Content padder>
+          <GenerateForm
+            ref = {c => { this.formGenerator = c }}
+            fields = {fields}
+          />
+          
+          <Button block onPress={() => this.loginFirebase() }>
+            <Text>Login</Text>
+          </Button>
+          <View style={{ flex: 1, flexDirection : 'row', justifyContent: 'center', marginTop: 5, alignItems: 'center' }}>
+            <Text style={{ fontSize: 12 }}>You don't have an account?</Text>
+            <Button transparent onPress={ () => this.props.navigation.navigate('Register') }>
+              <Text style={{ fontSize: 12 }} >Register</Text>
+            </Button>
+          </View>
+        </Content>
+      </Container>
     );
   }
 }

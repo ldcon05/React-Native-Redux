@@ -6,6 +6,7 @@ import { List, ListItem, Text, Button, Icon, Fab, View, Header, Left, Body, Titl
 import { fetchContacts, selectedContact } from '../../redux/actions/contacts';
 import { logOut } from '../../redux/actions/users'
 import Navbar from '../layout/header'
+import Spinner from '../layout/spinner'
 
 class Home extends Component {
 
@@ -27,8 +28,13 @@ class Home extends Component {
     let items = []
     this.props.contacts.forEach((contact) => {
       items.push(
-        <ListItem key={contact.id} onPress = { () => this.showContact(contact.data())}>
-          <Text>{contact.data().name}</Text>
+        <ListItem key={contact.id} onPress = { () => this.showContact(contact)}>
+          <Left>
+            <Text>{contact.data().name}</Text>
+          </Left>
+          <Right>
+            <Icon name="arrow-forward" />
+          </Right>
         </ListItem>
       )
     });
@@ -39,6 +45,8 @@ class Home extends Component {
   render() {
     if (this.props.loggedUser)
       this.getContacts(this.props.loggedUser.user.uid)
+    else 
+      return Spinner()
 
     return (
       <View style={{ flex: 1 }}>

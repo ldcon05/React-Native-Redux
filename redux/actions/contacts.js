@@ -41,4 +41,15 @@ function selectedContact(contact) {
   }
 }
 
-export { FETCH_CONTACTS, fetchContacts, createContact, selectedContact, SELECTED_CONTACT }
+function deleteContact(documentId){
+  return dispatch => {
+    firestore
+      .collection('contacts')
+      .doc(documentId)
+      .delete()
+      .then( removedDocument => { })
+      .catch( error => {})
+  }
+}
+
+export { FETCH_CONTACTS, fetchContacts, createContact, selectedContact, SELECTED_CONTACT, deleteContact }

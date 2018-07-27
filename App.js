@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import Expo, { Font } from 'expo';
 import { Provider } from 'react-redux';
-import { Text } from 'react-native'
 
 import RouterOutlet from './routes'
 import store from './redux/reducers/root-reducer'
+import Spinner from './components/layout/spinner'
 
 export default class App extends Component {
 
@@ -24,7 +24,7 @@ export default class App extends Component {
 
   render() {
     if (!this.state.fontLoaded)
-      return <Text>Loading...</Text>;
+      return Spinner() 
 
     return (
       <Provider store={ store }>
