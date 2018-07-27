@@ -1,9 +1,12 @@
 import firebase from 'firebase';
 
 const firebaseSettings = {
-  apiKey: "AIzaSyB53YKna0uvr7-RtODZPBiGCQMtkGPzuYA",
-  authDomain: "phonebook-b7f6f.firebaseapp.com",
-  projectId: "phonebook-b7f6f",
+  apiKey: "AIzaSyBBb4RkrI8UkQO2hSjQY97nXh8JEn6YPc0",
+  authDomain: "phonebooks-6e767.firebaseapp.com",
+  databaseURL: "https://phonebooks-6e767.firebaseio.com",
+  projectId: "phonebooks-6e767",
+  storageBucket: "phonebooks-6e767.appspot.com",
+  messagingSenderId: "434190975271"
 };
 
 firebase.initializeApp(firebaseSettings);

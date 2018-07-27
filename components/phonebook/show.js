@@ -13,6 +13,10 @@ class ShowContact extends Component {
     this.props.navigation.navigate('Home')
   }
 
+  updateContact() {
+    this.props.navigation.navigate('Update')
+  }
+
   render() {
     return (
       <Container>
@@ -31,6 +35,9 @@ class ShowContact extends Component {
           </View>
           <Button block danger onPress={ () => this.removeContact() }>
             <Text>Drop Contact</Text>
+          </Button>
+          <Button block style={{ marginTop: 10 }} onPress={ () => this.updateContact() }>
+            <Text>Update Contact</Text>
           </Button>
         </Content>
       </Container>

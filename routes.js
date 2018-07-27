@@ -6,6 +6,7 @@ import Home from './components/phonebook/home'
 import CreatePhoneNumber from './components/phonebook/create'
 import ShowContact from './components/phonebook/show'
 import Search from './components/phonebook/search'
+import Update from './components/phonebook/update'
 
 
 const routeConfigs = {
@@ -26,9 +27,12 @@ const routeConfigs = {
   },
   Search: {
     screen: Search
+  },
+  Update: {
+    screen: Update
   }
 }
 
-const StackNavigatorConfig = { initialRouteName: 'Login', headerMode: 'none'  }
+const StackNavigatorConfig = { initialRouteName: 'Login', headerMode: 'none' }
 
 export default createStackNavigator(routeConfigs, StackNavigatorConfig);

@@ -41,6 +41,29 @@ function selectedContact(contact) {
   }
 }
 
+function updateContact(documentId, values) {
+  return async  dispatch => {
+    await firestore
+      .collection('contacts')
+      .doc(documentId)
+      .update({
+        name: values.name,
+        number: values.phoneNumber
+      })
+
+    const updatedDocument = await firestore
+      .collection('contacts')
+      .doc(documentId)
+      .get()
+
+    dispatch({
+      type: SELECTED_CONTACT,
+      payload: updatedDocument
+    })
+
+  }
+}
+
 function deleteContact(documentId){
   return dispatch => {
     firestore
@@ -52,4 +75,4 @@ function deleteContact(documentId){
   }
 }
 
-export { FETCH_CONTACTS, fetchContacts, createContact, selectedContact, SELECTED_CONTACT, deleteContact }
+export { FETCH_CONTACTS, fetchContacts, createContact, selectedContact, SELECTED_CONTACT, updateContact, deleteContact }
